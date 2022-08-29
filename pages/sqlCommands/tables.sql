@@ -123,4 +123,4 @@ create table questions(
     primary key(course_id),
     FOREIGN KEY (general_user_id) REFERENCES general_user(id)
 
-)
+);
