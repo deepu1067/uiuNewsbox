@@ -15,12 +15,53 @@
     margin: 0;
 }
 
-body{
+main{
     background-color: var(--main-color);
 }
 
-main{
-    background-color: var(--main-color);
-    height: max-content;
-    padding: 1rem 5rem !important;
+.w-75{
+    width: 75% !important;
+}
+
+main .col-7{
+    border-left: 2px solid var(--second-secondary-color) !important;
+}
+
+main .col-7 form{
+    gap: 1.2rem;
+}
+
+main .col-7 form .btn{
+    background-color:  var(--third-color);
+    color: white !important;
+    padding: 0.6rem 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2rem !important;
+}
+
+main .col-7 form .invalid-feedback{
+    font-weight: bold !important;
+}
+
+main .col-7 > div{
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.dropdown-divider{
+    height: 1px !important;
+    border-top: 2px solid var(--second-secondary-color);
+}
+
+main .col-7 > h5 a{
+    text-decoration: none;
+    color: var(--third-color) !important;
+    padding: 0.3rem 0.4rem;
+    border-radius: 10px;
+}
+
+main .col-7 > h5 a:hover{
+    background-color: var(--third-color);
+    color: white !important;
 }
