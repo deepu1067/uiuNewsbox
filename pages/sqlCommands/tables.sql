@@ -7,8 +7,9 @@ create table admin
     id int AUTO_INCREMENT,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
-    email varchar(100),
+    email varchar(100) UNIQUE,
     phone_number varchar(50),
+    passwords VARCHAR(20),
     primary key(id)
 );
 
@@ -23,8 +24,9 @@ create table general_user(
     id int AUTO_INCREMENT,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
-    email varchar(100),
+    email varchar(100) UNIQUE,
     phone_number varchar(50),
+    passwords VARCHAR(20),
     primary key(id)
 );
 
@@ -38,8 +40,9 @@ create table forumRep(
     id int AUTO_INCREMENT,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
-    email varchar(100),
+    email varchar(100) UNIQUE,
     phone_number varchar(50),
+    passwords VARCHAR(20),
     primary key(id)
 );
 
