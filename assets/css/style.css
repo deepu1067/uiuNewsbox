@@ -31,6 +31,11 @@ main .col-7 form{
     gap: 1.2rem;
 }
 
+main .col-7 form input:focus{
+    box-shadow: 0px 0px 5px 2px rgba(227, 140, 41, 0.782);
+    border: 1px solid var(--secondary-color);
+}
+
 main .col-7 form .btn{
     background-color:  var(--third-color);
     color: white !important;
