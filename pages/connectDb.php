@@ -2,7 +2,7 @@
 
 use function PHPSTORM_META\type;
 
-    $host = "localhost:3306";
+    $host = "localhost";
     $user = 'root';
     $pass = '';
 
