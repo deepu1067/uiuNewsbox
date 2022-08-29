@@ -4,7 +4,7 @@ USE uiuNewsBox;
 
 create table admin
 (
-    id int,
+    id int AUTO_INCREMENT,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
     email varchar(100),
@@ -20,7 +20,7 @@ create table admin_address
 );
 
 create table general_user(
-    id int,
+    id int AUTO_INCREMENT,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
     email varchar(100),
@@ -35,7 +35,7 @@ create table general_address(
 );
 
 create table forumRep(
-    id int,
+    id int AUTO_INCREMENT,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
     email varchar(100),
@@ -50,7 +50,7 @@ create table forumRep_address(
 );
 
 create table newsPost(
-    post_id int,
+    post_id int AUTO_INCREMENT,
     title varchar(100),
     content varchar(1000),
     likes int,
@@ -72,7 +72,7 @@ create table post_comment(
 );
 
 create table job_post(
-    post_id int,
+    post_id int AUTO_INCREMENT,
     likes int,
     content varchar(1000),
     title varchar(50),
@@ -89,7 +89,7 @@ create table job_post(
 );
 
 create table jobPost_comment(
-    cDates date,
+    cDates date ,
     cTime time,
     content varchar(1000),
     cLike int,
@@ -98,7 +98,7 @@ create table jobPost_comment(
 );
 
 create table events(
-    event_id int,
+    event_id int AUTO_INCREMENT,
     title varchar(100),
     eDates date,
     eTime time,
@@ -112,7 +112,7 @@ create table events(
 );
 
 create table questions(
-    course_id int,
+    course_id int AUTO_INCREMENT,
     course_name varchar(100),
     files varchar(100),
     general_user_id int,

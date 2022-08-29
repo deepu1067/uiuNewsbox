@@ -6,9 +6,9 @@
 </head>
 <body>
     <?php
-        include "pages/sqlCommands/connectDb.php";
-
-
+        include "pages/sqlCommands/login.php";
     ?>
+
+    
 </body>
 </html>
