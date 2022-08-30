@@ -70,7 +70,7 @@ include "create.php";
                 </div>
                 <?php
                 if ($email_err == 1) {
-                    echo "<div class='fw-bold' style='color: red !important'> Email is already used </div>";
+                    echo "<div class='fw-bold' style='color: red !important'> Email is already exists </div>";
                 }
                 ?>
             </div>

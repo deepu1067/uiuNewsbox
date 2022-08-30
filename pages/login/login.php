@@ -38,7 +38,6 @@
             $_SESSION['email'] = $admin_row["email"];
             $_SESSION['type'] = 'admin';
 
-            // header("location: pages/".$_SESSION['type']."/mainPage.php");
         }
         else if(!empty($forum_row) && $forum_row["email"] == $useremail && $forum_row["passwords"] == $password){
             //starting a session
