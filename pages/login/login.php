@@ -30,8 +30,8 @@
         $admin_row = mysqli_fetch_assoc(mysqli_query($sql, $a_query));
         $forum_row = mysqli_fetch_assoc(mysqli_query($sql, $f_query));
         $general_row = mysqli_fetch_assoc(mysqli_query($sql, $g_query));
-
-        if($admin_row["email"] == $useremail && $admin_row["passwords"] == $password){
+        
+        if(!empty($admin_row) && $admin_row["email"] == $useremail && $admin_row["passwords"] == $password){
             //starting a session
             session_start();
             $_SESSION["loggedin"] = true;
@@ -47,7 +47,7 @@
             $_SESSION['email'] = $forum_row["email"];
             $_SESSION['type'] = 'forumRep';
         }
-        else if(!empty($forum_row) && $general_row["email"] == $useremail && $general_row["passwords"] == $password){
+        else if(!empty($general_row) && $general_row["email"] == $useremail && $general_row["passwords"] == $password){
             //starting a session
             session_start();
             $_SESSION["loggedin"] = true;

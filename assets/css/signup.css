@@ -16,6 +16,40 @@
     margin: 0;
 }
 
+#upper{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    width: 100vw;
+    height: 110vh;
+    background-color: #f1a7617c;
+    z-index: 9999;
+}
+
+#upper .card{
+    width: 500px;
+    height: 500px;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#upper .card a{
+    text-decoration: none;
+    color: var(--third-color) !important;
+    padding: 0.3rem 0.4rem;
+    border-radius: 10px;
+    border: 1px solid var(--third-color);
+}
+
+#upper .card  a:hover{
+    background-color: var(--third-color);
+    color: white !important;
+}
+
 main{
     background-color: var(--main-color);
 }
@@ -57,3 +91,4 @@ main > h5 a:hover{
 main form > div:first-child{
     align-self: baseline;
 }
+

@@ -1,7 +1,9 @@
 <?php
     include "../sqlCommands/connectDb.php";
 
-    $login_err = 0;
+    $email_err = 0;
+    $pass_err = 0;
+    $success = 0;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $type = $_POST["account-type"];
@@ -12,8 +14,24 @@
         $password = $_POST["password"];
         $con_pass = $_POST["con-pass"];
 
-        $query = "INSERT INTO {$type} (`first_name`, `last_name`, `email`, `phone_number`, `passwords`) VALUES ('{$first_name}', '{$last_name}', '{$email}', '{$phone}', '{$password}');" ;
 
+        $check_query = "select email from {$type} where email='{$email}'";
+        $row = mysqli_fetch_assoc(mysqli_query($sql, $check_query));
+
+        if($row == null){
+            if($password == $con_pass){
+                $insert_query = "insert into {$type}(first_name, last_name, email, phone_number, passwords) values ('{$first_name}',  '{$last_name}', '{$email}', '{$phone}', '{$password}');";
+
+                mysqli_query($sql, $insert_query);
+                $success = 1;
+            }
+            else{
+                $pass_err = 1;
+            }
+        }
+        else{
+            $email_err = 1;
+        }
         
     }
 ?>

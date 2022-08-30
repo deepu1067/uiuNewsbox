@@ -1,5 +1,5 @@
 <?php
-    include "create.php";
+include "create.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,14 +9,20 @@
     <meta charset="UTF-8">
     <title>UIU News Box</title>
     <link rel="stylesheet" href="../../assets/css/signup.css">
+    <script src="../../assets/js/app.js"></script>
 </head>
 
 <body>
+    <section <?php if ($success == 1) echo "id='upper'";
+                else echo "class='d-none'"; ?>>
+        <div class="card">
+            <h3 class="fw-bold pb-1">Account Created</h3>
 
-    <?php
-        
-    ?>
-    <main class="container row m-auto justify-content-center mt-4 p-4">
+            <a href="../../index.php" class="ml-1">Log in now</a>
+        </div>
+    </section>
+
+    <main class="container row m-auto justify-content-center p-4 ">
         <h1 class="col-12 text-center text-uppercase pb-3 fw-bold">welcome to uiu newsbox</h1>
 
         <form class="col-5 d-flex flex-column align-items-center needs-validation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
@@ -26,7 +32,7 @@
                 <div class="input-group w-100 mb-2">
                     <div class="input-group-text">
                         <input class="form-check-input mt-0" type="radio" name="account-type" value="forumRep" id="forum" style="
-                    margin-right: 0.4rem;">
+                    margin-right: 0.4rem;" required>
                         <label for="forum">Forum Representitive</label>
                     </div>
                 </div>
@@ -34,7 +40,7 @@
                 <div class="input-group w-100">
                     <div class="input-group-text">
                         <input class="form-check-input mt-0" type="radio" name="account-type" value="general_user" id="general" style="
-                    margin-right: 0.4rem;">
+                    margin-right: 0.4rem;" required>
                         <label for="general">General User</label>
                     </div>
                 </div>
@@ -62,6 +68,11 @@
                 <div class="invalid-feedback fw-bold">
                     Please provide a valid email
                 </div>
+                <?php
+                if ($email_err == 1) {
+                    echo "<div class='fw-bold' style='color: red !important'> Email is already used </div>";
+                }
+                ?>
             </div>
 
             <div class="form-floating mb-3 w-100">
@@ -80,9 +91,14 @@
             <div class="form-floating mb-3 w-100">
                 <input type="password" class="form-control" id="con-password" name="con-pass" placeholder="con-pass" required>
                 <label for="con-password">Confirm Password</label>
+                <?php
+                    if ($pass_err == 1) {
+                        echo "<div class='fw-bold' style='color: red !important'> Password not matched </div>";
+                    }
+                ?>
             </div>
 
-            <button class="btn" type="submit">Create Account</button>
+            <button class="btn" type="submit" >Create Account</button>
         </form>
 
         <h5 class="mt-4 fw-bold col-10 text-center">Already have an account? <a href="../../index.php" class="ml-1">Log in here</a></h5>
@@ -92,6 +108,7 @@
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/all.min.js"></script>
     <script src="../../assets/js/login_validation.js"></script>
+
 </body>
 
 </html>
