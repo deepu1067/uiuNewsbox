@@ -16,4 +16,44 @@
     margin: 0;
 }
 
+main{
+    background-color: var(--main-color);
+}
 
+main form input:focus{
+    box-shadow: 0px 0px 5px 2px rgba(227, 140, 41, 0.782) !important;
+    border: 1px solid var(--secondary-color) !important;
+}
+
+
+main form .btn{
+    background-color:  var(--third-color);
+    color: white !important;
+    padding: 0.6rem 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2rem !important;
+
+    width: max-content;
+}
+
+main form .btn:hover{
+    background-color:  var(--third-color);
+    color: white !important;
+}
+
+main > h5 a{
+    text-decoration: none;
+    color: var(--third-color) !important;
+    padding: 0.3rem 0.4rem;
+    border-radius: 10px;
+}
+
+main > h5 a:hover{
+    background-color: var(--third-color);
+    color: white !important;
+}
+
+main form > div:first-child{
+    align-self: baseline;
+}

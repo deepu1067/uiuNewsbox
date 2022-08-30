@@ -1,5 +1,5 @@
 <?php
-include "create.php";
+    include "create.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,37 +12,80 @@ include "create.php";
 </head>
 
 <body>
-    <main class="container">
-        <h2>welcome to uiu newsbox</h2>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="first_name" name="first_name" placeholder="first name">
+    <?php
+        
+    ?>
+    <main class="container row m-auto justify-content-center mt-4 p-4">
+        <h1 class="col-12 text-center text-uppercase pb-3 fw-bold">welcome to uiu newsbox</h1>
+
+        <form class="col-5 d-flex flex-column align-items-center needs-validation" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
+
+            <div class="d-flex flex-column justify-content-center mb-2">
+                <p class="m-0 text-center text-uppercase mb-1">Choose your account type : </p>
+                <div class="input-group w-100 mb-2">
+                    <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="radio" name="account-type" value="forumRep" id="forum" style="
+                    margin-right: 0.4rem;">
+                        <label for="forum">Forum Representitive</label>
+                    </div>
+                </div>
+
+                <div class="input-group w-100">
+                    <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="radio" name="account-type" value="general_user" id="general" style="
+                    margin-right: 0.4rem;">
+                        <label for="general">General User</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3 w-100">
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="first name" required>
                 <label for="first_name">First Name</label>
+                <div class="invalid-feedback fw-bold">
+                    Please provide a valid input
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="last_name">
+
+            <div class="form-floating mb-3 w-100">
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="last_name" required>
                 <label for="last_name">Last Name</label>
+                <div class="invalid-feedback fw-bold">
+                    Please provide a valid input
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" name="email" placeholder="email">
+
+            <div class="form-floating mb-3 w-100">
+                <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
                 <label for="email">Email</label>
+                <div class="invalid-feedback fw-bold">
+                    Please provide a valid email
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input type="phone" class="form-control" id="phone" name="phone" placeholder="phone">
+
+            <div class="form-floating mb-3 w-100">
+                <input type="phone" class="form-control" id="phone" name="phone" placeholder="phone" required>
                 <label for="phone">Phone</label>
+                <div class="invalid-feedback fw-bold">
+                    Please provide a valid phone number
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password" name="password" placeholder="password">
+
+            <div class="form-floating mb-3 w-100">
+                <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
                 <label for="password">Password</label>
             </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="con-password" name="con-pass" placeholder="con-pass">
+
+            <div class="form-floating mb-3 w-100">
+                <input type="password" class="form-control" id="con-password" name="con-pass" placeholder="con-pass" required>
                 <label for="con-password">Confirm Password</label>
             </div>
 
-            <button class="btn" type="submit">Login</button>
+            <button class="btn" type="submit">Create Account</button>
         </form>
+
+        <h5 class="mt-4 fw-bold col-10 text-center">Already have an account? <a href="../../index.php" class="ml-1">Log in here</a></h5>
     </main>
 
 
