@@ -36,8 +36,11 @@
 
     <div>
 
-        <h3>
-            <?php
+
+
+
+<h2>
+<?php
 
 while($row = mysqli_fetch_array($run)) {
 
@@ -46,20 +49,20 @@ while($row = mysqli_fetch_array($run)) {
   
   echo "Email: ".$row['email'] . "<br />";
   echo "Phone Number : ".$row['phone_number'] . "<br />";
-  echo '<a class="btn btn-lg btn-block btn btn-danger" href="delete.php?id='. $row['id'] .'"> Delete </a>';
+   echo "<br/>";
+
+
+  echo '<a class="btn btn-lg btn-block btn btn-primary" href="update.php?id='. $row['id'] .'"> Update   </a>';
+  echo '<a class="btn btn-lg btn-block btn btn-danger" href="delete.php?id='. $row['id'] .'"> Delete     </a>';
+ 
 
 }
 
 mysqli_close($sql);
 ?>
-        </h3>
+</h2>
     </div>
     <br>
-
-    <div>
-      
-    </div>
-
 </body>
 
 </html>
