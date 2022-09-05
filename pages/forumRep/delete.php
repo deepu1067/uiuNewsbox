@@ -1,17 +1,17 @@
 <?php
-include 'db_connect.php';
+include '../sqlCommands/connectDb.php';
 
 
 $queries = array();
 parse_str($_SERVER['QUERY_STRING'], $queries);
 $id = $queries['id'];
-echo $id ;
 
-$sql = "DELETE FROM `forumrep` WHERE id= $id";
-$result = mysqli_query($con, $sql);
 
-$con->close();
+$q = "DELETE FROM `forumrep` WHERE id= $id";
+$result = mysqli_query($sql, $q);
 
-//header("Location: mainPage.php");
+$sql->close();
+
+header("Location: ../login/logout.php");
 exit();
 ?>
