@@ -1,6 +1,7 @@
 @import url(bootstrap.min.css);
 @import url(all.min.css);
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
 *{
     --main-color: #FDEEDC;
     --secondary-color: #F1A661;
@@ -69,4 +70,12 @@ main .col-7 > h5 a{
 main .col-7 > h5 a:hover{
     background-color: var(--third-color);
     color: white !important;
+}
+
+main .col-7 input[type="radio"]:checked{
+    box-shadow: none !important;
+}
+
+main .col-7 input[type="checkbox"]:checked{
+    box-shadow: none !important;
 }
