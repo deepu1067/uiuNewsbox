@@ -26,8 +26,7 @@
 
         <h2 class="text-uppercase fw-bold"><?php echo "It is a ".$_SESSION['type'] ;?></h2>
         <div>
-            <a href="mainPage.php">
-                <-Back< /a>
+            <a href="mainPage.php"> <-Back </a>
         </div>
     </nav>
 
