@@ -1,7 +1,7 @@
 <?php
     session_start();
     include "../sqlCommands/connectDb.php";
-    $q =  "SELECT * FROM `admin`;";
+    $q =  "SELECT * FROM `general_user`;";
     $run = mysqli_query($sql, $q);
     $html = "";
 
@@ -19,7 +19,7 @@
 
 
                     //   "</td><td>". '<a class="btn btn-lg btn-block btn btn-info" href="5.php?id=' . $row["id"] .'"> Update</a>' 
-                    //   ."</td><td>". '<a class="btn btn-lg btn-block btn btn-danger" href="4.php?id=' . $row["id"] .'"> Delete</a>'.
+                      "</td><td>". '<a class="btn btn-lg btn-block btn btn-danger" href="nextdelete.php?id=' . $row["id"] .'"> Delete</a>'.
                      "</td></tr>";
            
         }
@@ -59,8 +59,6 @@
 
     <div>
         <a href="next.php">User Details</a>
-        <a href="forumuser.php">Forum Details</a>
-
     </div>
 
     <div>
@@ -93,6 +91,10 @@
             
         
         </table>
+</div>
+
+<div>
+<a type="button" class="btn btn-success" href = "mainPage.php"><-Back</a>
 </div>
 </body>
 </html>

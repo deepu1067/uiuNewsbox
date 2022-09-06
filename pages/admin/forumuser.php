@@ -1,7 +1,7 @@
 <?php
     session_start();
     include "../sqlCommands/connectDb.php";
-    $q =  "SELECT * FROM `admin`;";
+    $q =  "SELECT * FROM `forumrep`;";
     $run = mysqli_query($sql, $q);
     $html = "";
 
@@ -19,7 +19,7 @@
 
 
                     //   "</td><td>". '<a class="btn btn-lg btn-block btn btn-info" href="5.php?id=' . $row["id"] .'"> Update</a>' 
-                    //   ."</td><td>". '<a class="btn btn-lg btn-block btn btn-danger" href="4.php?id=' . $row["id"] .'"> Delete</a>'.
+                       "</td><td>". '<a class="btn btn-lg btn-block btn btn-danger" href="deleteforumuser.php?id=' . $row["id"] .'"> Delete</a>'.
                      "</td></tr>";
            
         }
@@ -58,12 +58,6 @@
     <h2 class="text-uppercase fw-bold"><?php echo "It is an ".$_SESSION['type'] ;?></h2>
 
     <div>
-        <a href="next.php">User Details</a>
-        <a href="forumuser.php">Forum Details</a>
-
-    </div>
-
-    <div>
         <a href="../login/logout.php">logout</a>
     </div>
 </nav>
@@ -93,6 +87,10 @@
             
         
         </table>
+</div>
+
+<div>
+<a type="button" class="btn btn-primary" href = "mainPage.php">Back</a>
 </div>
 </body>
 </html>
