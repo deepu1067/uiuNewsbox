@@ -34,83 +34,88 @@ include '../sqlCommands/connectDb.php';
         <div class="tab-content" id="v-pills-tabContent" style="width: 90%!important;">
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
                 <!-- HOME -->
-                <section class="mt-2">
-                    <form id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <section class="mt-2" id="form">
+                    <?php while ($row = mysqli_fetch_assoc($query)) : ?>
 
-                        <?php while ($row = mysqli_fetch_assoc($query)) : ?>
+                        <div class="card border-uiu mb-3" style="max-width: 25rem;">
+                            <div class="card-header bg-transparent">
+                                <?php
+                                $author_query;
+                                $author_type;
 
-                            <div class="card border-uiu mb-3" style="max-width: 25rem;">
-                                <div class="card-header bg-transparent">
+                                if (!empty($row["admin_id"])) {
+                                    $author_query = "select concat(first_name, ' ', last_name) fullName from admin where id={$row["admin_id"]}";
+                                    $author_type = "admin";
+                                } else {
+                                    $author_query = "select concat(first_name, ' ', last_name) fullName from forumrep where id={$row["forum_id"]}";
+                                    $author_type = "forum represtitive";
+                                }
+
+                                $author = mysqli_fetch_assoc(mysqli_query($sql, $author_query));
+
+                                echo "{$author["fullName"]} ({$author_type})";
+
+                                $comment_query = mysqli_query($sql, "select * from post_comment where post_id={$row["post_id"]}");
+
+                                $size = mysqli_num_rows($comment_query);
+                                ?>
+                            </div>
+
+                            <div class="card-body border-top-uiu border-bottom-uiu">
+                                <p class="card-text">
                                     <?php
-                                    $author_query;
-                                    $author_type;
-
-                                    if (!empty($row["admin_id"])) {
-                                        $author_query = "select concat(first_name, ' ', last_name) fullName from admin where id={$row["admin_id"]}";
-                                        $author_type = "admin";
-                                    } else {
-                                        $author_query = "select concat(first_name, ' ', last_name) fullName from forumrep where id={$row["forum_id"]}";
-                                        $author_type = "forum represtitive";
-                                    }
-
-                                    $author = mysqli_fetch_assoc(mysqli_query($sql, $author_query));
-
-                                    echo "{$author["fullName"]} ({$author_type})";
-
-                                    $comment_query = mysqli_query($sql, "select * from post_comment where post_id={$row["post_id"]}");
-                                    
-                                    $size = mysqli_num_rows($comment_query) ;
+                                    echo  $row["content"];
                                     ?>
-                                </div>
+                                </p>
+                            </div>
 
-                                <div class="card-body border-top-uiu border-bottom-uiu">
-                                    <p class="card-text">
-                                        <?php
-                                        echo  $row["content"];
-                                        ?>
+                            <div class="card-footer bg-transparent">
 
-                                        
-                                    </p>
-                                </div>
+                                <!-- sending input data -->
+                                <form action="post.php" method="post" class="mb-2">
+                                    <div class="form-floating mb-3">
+                                        <input type="hidden" name="post_id" <?php echo "value='{$row["post_id"]}'"; ?>>
+                                        <input type="text" class="form-control" <?php echo "id='commentInput{$row["post_id"]}'"; ?> placeholder="text" name="comment" value="" required>
+                                        <label <?php echo "for='comment{$row["post_id"]}'"; ?>>Comment here</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-uiu text-capitalize">comment</button>
+                                </form>
 
-                                <div class="card-footer bg-transparent">
+                                <button type="button" class="btn btn-uiu" data-bs-toggle="modal" <?php echo "data-bs-target='#comment{$row["post_id"]}'"; ?>>
+                                    View Comments
+                                </button>
 
-                                    
+                                <!-- Modal -->
+                                <div class="modal fade" tabindex="-1" <?php echo "id='comment{$row["post_id"]}'"; ?> aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-capitalize fw-bold" id="exampleModalLabel">
+                                                    <?php echo $row["title"]; ?>
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
 
-                                    <button type="button" class="btn btn-uiu" data-bs-toggle="modal" <?php echo "data-bs-target='#comment{$row["post_id"]}'"; ?>>
-                                        View Comments
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" tabindex="-1" <?php echo "id='comment{$row["post_id"]}'"; ?> aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title text-capitalize fw-bold" id="exampleModalLabel">
-                                                        <?php echo $row["title"]; ?>
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-
-                                                <div class="modal-body">
-                                                    <?php if($size == 0): ?>
-                                                        <p class="m-0 text-uppercase">no comments yet</p>
-                                                    <?php else: ?>
+                                            <div class="modal-body">
+                                                <?php if ($size == 0) : ?>
+                                                    <p class="m-0 text-uppercase">no comments yet</p>
+                                                <?php else : ?>
                                                     <ol>
                                                         <?php while ($com_row = mysqli_fetch_assoc($comment_query)) : ?>
                                                             <li><?php echo $com_row["content"]; ?></li>
                                                         <?php endwhile ?>
                                                     </ol>
-                                                    <?php endif ?>
-                                                </div>
+                                                <?php endif ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        <?php endwhile  ?>
-                    </form>
+
+                            </div>
+                        </div>
+
+                    <?php endwhile  ?>
 
                 </section>
             </div>

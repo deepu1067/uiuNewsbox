@@ -1,13 +1,19 @@
 <?php
     include '../sqlCommands/connectDb.php' ;
     $query = mysqli_query($sql, "select * from newspost");
-    
+    date_default_timezone_set("Etc/GMT-6");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $comment = $_POST["comment"];
+        $post_id = $_POST["post_id"];
+        $content = $_POST["comment"];
+        $date = date("d/m/Y");
+        $time = date("h:i:sa");
+        
 
-        // header("location: ../../index.php");
+        $comment_query = "insert into post_comment(cDates, cTime, content, cLike, post_id) values('{$date}' , '{$time}' , '{$content}', 0, {$post_id})" ;
 
-        echo $comment ;
+        mysqli_query($sql, $comment_query);
+
+        header("location: ../../index.php");
     }
 ?>
