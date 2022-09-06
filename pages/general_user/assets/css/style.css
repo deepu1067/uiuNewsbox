@@ -2,7 +2,7 @@
 @import url(../../../../assets/css/all.min.css);
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 
-*{
+* {
     --main-color: #FDEEDC;
     --secondary-color: #F1A661;
     --second-secondary-color: #F1A661;
@@ -16,40 +16,97 @@
     margin: 0;
 }
 
-nav{ 
+nav {
     background-color: var(--third-color);
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
-nav img{
+nav img {
     width: 150px;
 }
 
-body > div{
+body>div {
     padding: 0 1rem !important;
     height: 100vh;
 }
 
-body > div > div:first-child{
+body>div>div:first-child {
     height: 100vh;
     padding-right: 1rem;
     border-right: 1px solid var(--secondary-color);
 }
 
-body > div button{
+body>div button {
     font-size: 1.2rem !important;
 }
 
-.nav-pills .nav-link.active{
+.nav-pills .nav-link.active {
     background-color: transparent !important;
     font-weight: bold;
-    color: var(--third-color)  !important;
+    color: var(--third-color) !important;
     border-bottom: 1px solid var(--third-color);
     border-radius: 0;
 }
 
-.card-footer > .btn{
+.border-uiu {
+    border: 1px solid var(--third-color) !important;
+}
+
+.border-top-uiu {
+    border-top: 1px solid var(--third-color) !important;
+}
+
+.border-bottom-uiu {
+    border-bottom: 1px solid var(--third-color) !important;
+}
+
+.btn-uiu {
     background-color: var(--secondary-color) !important;
     color: white !important;
+}
+
+.card-header {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+    text-transform: uppercase;
+}
+
+.modal-footer {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-floating>#commentInput:focus {
+    box-shadow: 0px 0px 5px 2px rgba(227, 140, 41, 0.782) !important;
+    border: 1px solid var(--secondary-color) !important;
+}
+
+section>#form {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 25rem));
+    grid-gap: 0.6rem;
+}
+
+ol {
+    margin: 0 0 1.5em;
+    padding: 0;
+    counter-reset: item;
+}
+
+ol>li {
+    margin: 0;
+    padding: 0 0 0 2em;
+    text-indent: -2em;
+    list-style-type: none;
+    counter-increment: item;
+}
+
+ol>li:before {
+    display: inline-block;
+    width: 1em;
+    padding-right: 0.5em;
+    font-weight: bold;
+    text-align: right;
+    content: counter(item) ".";
 }

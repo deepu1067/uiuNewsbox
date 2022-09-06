@@ -1,6 +1,7 @@
 <?php
 session_start();
-include 'pages/general_user/post.php';
+include 'post.php';
+include '../sqlCommands/connectDb.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +17,7 @@ include 'pages/general_user/post.php';
 
     <nav class="d-flex justify-content-between align-items-center">
         <img src="../../assets/img/ForOrangeBg.png" alt="logo" class="img-fluid pt-1 pb-1">
+        <a href="../login/logout.php">logout</a>
     </nav>
 
     <div class="d-flex align-items-start">
@@ -24,49 +26,90 @@ include 'pages/general_user/post.php';
 
             <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
 
-            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">My posts</button>
 
-            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Job posts</button>
         </div>
 
-        <div class="tab-content w-100" id="v-pills-tabContent">
+        <div class="tab-content" id="v-pills-tabContent" style="width: 90%!important;">
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
                 <!-- HOME -->
                 <section class="mt-2">
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="card border-success mb-3" style="max-width: 25rem;">
-                            <div class="card-header bg-transparent border-success">Author</div>
-                            <div class="card-body text-success">
-                                <!-- <h5 class="card-title">Success card title</h5> -->
-                                <p class="card-text">
-                                    content
-                                </p>
-                            </div>
-                            <div class="card-footer bg-transparent">
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#comment">
-                                    Comment
-                                </button>
+                    <form id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="comment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ...
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
+                        <?php while ($row = mysqli_fetch_assoc($query)) : ?>
+
+                            <div class="card border-uiu mb-3" style="max-width: 25rem;">
+                                <div class="card-header bg-transparent">
+                                    <?php
+                                    $author_query;
+                                    $author_type;
+
+                                    if (!empty($row["admin_id"])) {
+                                        $author_query = "select concat(first_name, ' ', last_name) fullName from admin where id={$row["admin_id"]}";
+                                        $author_type = "admin";
+                                    } else {
+                                        $author_query = "select concat(first_name, ' ', last_name) fullName from forumrep where id={$row["forum_id"]}";
+                                        $author_type = "forum represtitive";
+                                    }
+
+                                    $author = mysqli_fetch_assoc(mysqli_query($sql, $author_query));
+
+                                    echo "{$author["fullName"]} ({$author_type})";
+
+                                    $comment_query = mysqli_query($sql, "select * from post_comment where post_id={$row["post_id"]}");
+                                    
+                                    $size = mysqli_num_rows($comment_query) ;
+                                    ?>
+                                </div>
+
+                                <div class="card-body border-top-uiu border-bottom-uiu">
+                                    <p class="card-text">
+                                        <?php
+                                        echo  $row["content"];
+                                        ?>
+
+                                        
+                                    </p>
+                                </div>
+
+                                <div class="card-footer bg-transparent">
+
+                                    
+
+                                    <button type="button" class="btn btn-uiu" data-bs-toggle="modal" <?php echo "data-bs-target='#comment{$row["post_id"]}'"; ?>>
+                                        View Comments
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" tabindex="-1" <?php echo "id='comment{$row["post_id"]}'"; ?> aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-capitalize fw-bold" id="exampleModalLabel">
+                                                        <?php echo $row["title"]; ?>
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <?php if($size == 0): ?>
+                                                        <p class="m-0 text-uppercase">no comments yet</p>
+                                                    <?php else: ?>
+                                                    <ol>
+                                                        <?php while ($com_row = mysqli_fetch_assoc($comment_query)) : ?>
+                                                            <li><?php echo $com_row["content"]; ?></li>
+                                                        <?php endwhile ?>
+                                                    </ol>
+                                                    <?php endif ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+                        <?php endwhile  ?>
                     </form>
 
                 </section>
@@ -74,7 +117,7 @@ include 'pages/general_user/post.php';
 
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
                 <!-- PROFILE -->
-
+                profile
             </div>
 
             <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">some</div>
