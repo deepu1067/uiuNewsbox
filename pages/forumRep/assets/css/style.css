@@ -45,3 +45,8 @@ nav div a:hover{
     background-color: #fff;
     color: var(--third-color) !important;
 }
+
+.container
+{
+    margin-bottom: 50px;
+}

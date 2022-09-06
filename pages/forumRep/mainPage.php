@@ -43,13 +43,23 @@
       }
   }  
 ?>
-        <h1>
+<div class="container">
+<h1 class = "position-absolute ">
             <?php
         echo "WELCOME " ." ".$html; 
        
        ?>
         </h1>
+
+
+</div>
+       
+        <br><br>
+        <a type="button" class="btn btn-secondary" href="post.php">Create a New post</a>
+</div>
     </div>
+
+
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/all.min.js"></script>
