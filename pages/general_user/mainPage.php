@@ -17,7 +17,7 @@ include '../sqlCommands/connectDb.php';
 
     <nav class="d-flex justify-content-between align-items-center">
         <img src="../../assets/img/ForOrangeBg.png" alt="logo" class="img-fluid pt-1 pb-1">
-        <a href="../login/logout.php">logout</a>
+        <a href="../login/logout.php" class="btn btn-uiu text-uppercase">logout</a>
     </nav>
 
     <div class="d-flex align-items-start">
@@ -31,7 +31,7 @@ include '../sqlCommands/connectDb.php';
             <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Job posts</button>
         </div>
 
-        <div class="tab-content" id="v-pills-tabContent" style="width: 90%!important;">
+        <div class="tab-content" id="v-pills-tabContent" style="width: 85%!important;">
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
                 <!-- HOME -->
                 <section class="mt-2" id="form">
@@ -122,7 +122,52 @@ include '../sqlCommands/connectDb.php';
 
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
                 <!-- PROFILE -->
-                profile
+                <?php include "profile.php"; ?>
+                <div class="card w-50 d-flex align-items-center flex-column m-auto mt-3">
+                    <?php while ($row = mysqli_fetch_assoc($profile_query)) : ?>
+                        <figure>
+                            <img src="assets/img/profile.png" alt="profile" class="img-fluid">
+                            <figcaption class="text-uppercase fw-bold text-center mt-3">
+                                <?php echo "{$row["first_name"]} {$row["last_name"]}" ?>
+                            </figcaption>
+                        </figure>
+
+                        <div>
+                            <p class="m-0"><?php echo "<strong>Email:</strong> {$row["email"]}" ?></p>
+                            <p class="m-0"><?php echo "<strong>Contact Number:</strong> {$row["phone_number"]}" ?></p>
+                        </div>
+
+                        <button class="btn btn-uiu mt-2" id="changeBtn">Change current password</button>
+
+                        <p <?php if($_SESSION["currentPass"]==1) echo "class='d-block m-0 mt-2 fw-bold'"; else echo "class='d-none'" ?>>Current password not matched</p>
+
+                    <?php endwhile ?>
+                </div>
+                
+                <aside id="upper" class="d-none">
+                    <button id="closeUpdate" class="btn btn-uiu-white fw-bold mb-3">Cancel</button>
+
+                    <form action="updatePass.php" class="d-flex justify-content-center align-items-center flex-column w-75" method="post">
+                        <div class="form-floating w-50">
+                            <input type="password" class="form-control" id="currentPassword" placeholder="Password" required name="curr_pass">
+                            <label for="currentPassword">Current password</label>
+                        </div>
+
+                        <div class="form-floating mt-2 w-50">
+                            <input type="password" class="form-control" id="newpass" placeholder="Password" required name="new_pass">
+                            <label for="newpass">New password</label>
+                        </div>
+
+                        <div class="form-floating mt-2 w-50">
+                            <input type="password" class="form-control " id="confirmpass" placeholder="Password" required name="con_pass">
+                            <label for="confirmpass">Confirm password</label>
+                        </div>
+                        <p class="d-none" id="errormsg">Not Matched</p>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-uiu-white fw-bold" id="updateBtn">Update Password</button>
+                        </div>
+                    </form>
+                </aside>
             </div>
 
             <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">some</div>
@@ -134,9 +179,11 @@ include '../sqlCommands/connectDb.php';
         </div>
     </div>
 
+
+
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/all.min.js"></script>
-
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

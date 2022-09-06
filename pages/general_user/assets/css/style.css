@@ -110,3 +110,41 @@ ol>li:before {
     text-align: right;
     content: counter(item) ".";
 }
+
+#v-pills-profile > div{
+    padding: 1rem 0.5rem;
+    box-shadow: 0px 0px 4px 3px rgba(231,166,26,1);
+}
+
+#v-pills-profile > div figure figcaption{
+    font-size: 1.4rem !important;
+}
+
+#v-pills-profile > div figure img{
+    max-width: 200px !important;
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 999px;
+    box-shadow: 0px 0px 4px 3px var(--text-color);
+}
+
+#v-pills-profile > div div{
+    font-size: 1.2rem;
+}
+
+#upper{
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 62px;
+    width: 88%;
+    height: 88%;
+    background-color: #f1a761e5;
+    z-index: 9999;
+}
+
+.btn-uiu-white{
+    background-color: #fff !important;
+    color: #E38B29 !important;
+}

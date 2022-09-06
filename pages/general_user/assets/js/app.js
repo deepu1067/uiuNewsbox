@@ -1,39 +1,35 @@
-var admin_box = document.getElementById("admin");
-var type_section = document.getElementById("type-section");
-var type_radio = type_section.getElementsByClassName("form-check-input");
+var cancelBtn = document.getElementById("closeUpdate");
+var updateContainer = document.getElementById("upper");
+var trigger = document.getElementById("changeBtn");
 
 
-admin_box.addEventListener("click", ()=>{
+trigger.addEventListener('click', ()=>{
+    updateContainer.className = "d-flex";
+})
 
-    if(admin_box.checked){
-        type_section.className = "d-none";
-        type_radio[0].removeAttribute("required");
-        type_radio[0].removeAttribute("name");
+cancelBtn.addEventListener('click', ()=>{
+    updateContainer.className = "d-none";
+})
 
-        type_radio[1].removeAttribute("required");
-        type_radio[1].removeAttribute("name");
 
-        var nameAtt = document.createAttribute("name");
-        nameAtt.value = "type";
+var newpass = document.getElementById("newpass");
+var confirmpass = document.getElementById("confirmpass");
+var error = document.getElementById("errormsg");
+var updateBtn = document.getElementById("updateBtn");
 
-        admin_box.setAttributeNode(nameAtt);
+confirmpass.addEventListener('keyup', ()=>{
+    var pass = newpass.value;
+    var con_pass = confirmpass.value;
+
+    console.log(con_pass);
+
+    if(pass != con_pass){
+        error.className  = "m-0 mt-1 fw-bold";
+        var disable = document.createAttribute("disabled");
+        updateBtn.setAttributeNode(disable);
     }
-    else if(!admin_box.checked){
-        admin_box.removeAttribute("name");
-        type_section.className = "d-flex flex-column align-items-center";
-
-        var reqAtt = document.createAttribute("required");
-        var nameAtt = document.createAttribute("name");
-        nameAtt.value = "type";
-
-        type_radio[0].setAttributeNode(reqAtt);
-        type_radio[0].setAttributeNode(nameAtt);
-
-        var nameAtt2 = document.createAttribute("name");
-        nameAtt2.value = "type";
-        type_radio[1].setAttributeNode(document.createAttribute("required"));
-        type_radio[1].setAttributeNode(nameAtt2);
-        
+    else{
+        error.className = "d-none";
+        updateBtn.removeAttribute("disabled");
     }
-        
 })

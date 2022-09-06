@@ -35,6 +35,7 @@
             $_SESSION["loggedin"] = true;
             $_SESSION['email'] = $row["email"];
             $_SESSION['type'] = $loginType;
+            $_SESSION["currentPass"] = 0;
         }
         else {
             $login_err = 1;
