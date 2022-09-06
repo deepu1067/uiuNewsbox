@@ -51,6 +51,11 @@
         </h1>
     </div>
 
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/all.min.js"></script>
+    <script src="assets/js/login_validation.js"></script>
+    <script src="assets/js/app.js"></script>
+
 </body>
 
 </html>
