@@ -2,6 +2,7 @@
 session_start();
 include 'post.php';
 include '../sqlCommands/connectDb.php';
+include 'room.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,17 +23,17 @@ include '../sqlCommands/connectDb.php';
 
     <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+            <button class="nav-link " id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
 
             <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
 
-            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">My posts</button>
+            <button class="nav-link active" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Group</button>
 
             <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Job posts</button>
         </div>
 
         <div class="tab-content" id="v-pills-tabContent" style="width: 85%!important;">
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+            <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
                 <!-- HOME -->
                 <section class="mt-2" id="form">
                     <?php while ($row = mysqli_fetch_assoc($query)) : ?>
@@ -139,11 +140,12 @@ include '../sqlCommands/connectDb.php';
 
                         <button class="btn btn-uiu mt-2" id="changeBtn">Change current password</button>
 
-                        <p <?php if($_SESSION["currentPass"]==1) echo "class='d-block m-0 mt-2 fw-bold'"; else echo "class='d-none'" ?>>Current password not matched</p>
+                        <p <?php if ($_SESSION["currentPass"] == 1) echo "class='d-block m-0 mt-2 fw-bold'";
+                            else echo "class='d-none'" ?>>Current password not matched</p>
 
                     <?php endwhile ?>
                 </div>
-                
+
                 <aside id="upper" class="d-none">
                     <button id="closeUpdate" class="btn btn-uiu-white fw-bold mb-3">Cancel</button>
 
@@ -170,12 +172,18 @@ include '../sqlCommands/connectDb.php';
                 </aside>
             </div>
 
-            <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">
-                <!-- discussion -->
-                
+            <div class="tab-pane fade show active" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
+                <?php while ($srow = mysqli_fetch_assoc($room_query)) : ?>
+                    <?php  user_exists($srow["id"]);  ?>
+                    <div>
+                        <?php 
+                            if(!$joined){
+                                echo ;
+                            } 
+                        ?>
+                    </div>
+                <?php endwhile ?>
             </div>
-
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">rand</div>
 
             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">rand2</div>
 

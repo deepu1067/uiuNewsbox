@@ -25,7 +25,7 @@
         $password = $_POST["password"];
         $loginType = $_POST["type"];
 
-        $query = "select email, passwords from {$loginType} where email='{$useremail}';";
+        $query = "select id, email, passwords from {$loginType} where email='{$useremail}';";
         
         $row = mysqli_fetch_assoc(mysqli_query($sql, $query));
         
@@ -36,6 +36,7 @@
             $_SESSION['email'] = $row["email"];
             $_SESSION['type'] = $loginType;
             $_SESSION["currentPass"] = 0;
+            $_SESSION["id"] = $row["id"];
         }
         else {
             $login_err = 1;

@@ -109,10 +109,10 @@ create table questions(
 create table room(
     id int AUTO_INCREMENT,
     forum_name VARCHAR(100),
-    owner_id int, 
+    forumRep_id int, 
 
     primary key(id),
-    Foreign Key (owner_id) REFERENCES forumRep(id)
+    Foreign Key (forumRep_id) REFERENCES forumRep(id)
 );
 
 create table users(
