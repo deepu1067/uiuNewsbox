@@ -48,9 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
 
-            <form action="send.php">
+            <form action="send.php" method="post">
                 <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                    <input type="hidden" name="room_id" <?php echo "value='{$room_id}'" ?>>
+                    <input type="text" class="form-control" aria-describedby="addon-wrapping" name="msg">
                     <button type="submit" class="btn btn-uiu">Send</button>
                 </div>
             </form>
