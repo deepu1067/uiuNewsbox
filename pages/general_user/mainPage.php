@@ -27,9 +27,9 @@ include 'room.php';
 
             <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
 
-            <button class="nav-link active" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Group</button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Group</button>
 
-            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Job posts</button>
+            <button class="nav-link active" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Joined</button>
         </div>
 
         <div class="tab-content" id="v-pills-tabContent" style="width: 85%!important;">
@@ -172,20 +172,48 @@ include 'room.php';
                 </aside>
             </div>
 
-            <div class="tab-pane fade show active" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
+                <!-- Forum list -->
                 <?php while ($srow = mysqli_fetch_assoc($room_query)) : ?>
-                    <?php  user_exists($srow["id"]);  ?>
-                    <div>
-                        <?php 
-                            if(!$joined){
-                                echo ;
-                            } 
-                        ?>
-                    </div>
+                    <?php user_exists($srow["id"]);  ?>
+                    <?php if (!$approve) : ?>
+                        <div class="card w-50 m-auto mb-3 pt-2 mt-2">
+                            <div class="card-title fw-bold text-uppercase text-center"><?php echo $srow["forum_name"]; ?></div>
+                            <div class="card-body">
+                                <?php if (!$joined) : ?>
+                                    <p class="m-0 text-center">Want be part of discussion room? </p>
+                                    <form action="join.php" class="d-flex justify-content-center align-items-center" method="post">
+                                        <input type="hidden" name="room_id" <?php echo "value='{$srow["id"]}'"; ?>>
+                                        <button class="btn btn-uiu" type="submit">Join</button>
+                                    </form>
+                                <?php endif ?>
+                                <?php if ($joined) : ?>
+                                    <p class="text-center m-0">Pending approval</p>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                    <?php endif ?>
                 <?php endwhile ?>
             </div>
 
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">rand2</div>
+            <div class="tab-pane fade show active" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">
+                <!-- joined -->
+                <?php if (mysqli_num_rows($joined_q) == 0) : ?>
+                    <h2 class="text-center" >Please join a forum discussion room first</h2>
+                <?php else : ?>
+                    <?php while ($a_row = mysqli_fetch_assoc($joined_q)) : ?>
+                        <div class="card w-50 m-auto mt-3 pt-2">
+                            <div class="card-title text-center text-uppercase fw-bold"><?php echo $a_row["forum_name"]; ?></div>
+                            <div class="card-body">
+                                <form action="chat.php" class="d-flex flex-column justify-content-center align-items-center">
+                                    <input type="hidden" name="joined_room" <?php echo "value='{$a_row["id"]}'" ?>>
+                                    <button class="btn btn-uiu" type="submit">Go</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endwhile ?>
+                <?php endif ?>
+            </div>
 
         </div>
     </div>
