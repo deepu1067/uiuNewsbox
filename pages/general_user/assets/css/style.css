@@ -77,7 +77,8 @@ body>div button {
     align-items: center;
 }
 
-.form-floating>#commentInput:focus , .form-floating > input:focus {
+.form-floating>#commentInput:focus,
+.form-floating>input:focus {
     box-shadow: 0px 0px 5px 2px rgba(227, 140, 41, 0.782) !important;
     border: 1px solid var(--secondary-color) !important;
 }
@@ -111,16 +112,16 @@ ol>li:before {
     content: counter(item) ".";
 }
 
-#v-pills-profile > div{
+#v-pills-profile>div {
     padding: 1rem 0.5rem;
-    box-shadow: 0px 0px 4px 3px rgba(231,166,26,1);
+    box-shadow: 0px 0px 4px 3px rgba(231, 166, 26, 1);
 }
 
-#v-pills-profile > div figure figcaption{
+#v-pills-profile>div figure figcaption {
     font-size: 1.4rem !important;
 }
 
-#v-pills-profile > div figure img{
+#v-pills-profile>div figure img {
     max-width: 200px !important;
     width: 200px !important;
     height: 200px !important;
@@ -128,11 +129,11 @@ ol>li:before {
     box-shadow: 0px 0px 4px 3px var(--text-color);
 }
 
-#v-pills-profile > div div{
+#v-pills-profile>div div {
     font-size: 1.2rem;
 }
 
-#upper{
+#upper {
     position: absolute;
     flex-direction: column;
     justify-content: center;
@@ -144,7 +145,47 @@ ol>li:before {
     z-index: 9999;
 }
 
-.btn-uiu-white{
+.btn-uiu-white {
     background-color: #fff !important;
     color: #E38B29 !important;
+}
+
+#chat>div {
+    padding: 0.3rem 1rem;
+    height: 80vh;
+    border-radius: 20px;
+    border-bottom: 8px solid var(--secondary-color);
+    gap: 1rem;
+}
+
+#msg {
+    height: 80%;
+    
+}
+
+#msg section>p:first-child {
+    background-color: var(--second-secondary-color);
+    color: white !important;
+    min-width: 5%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+#msg section>p:last-child {
+    padding: 5px 0;
+    padding-left: 5px;
+
+    border: 2px solid var(--second-secondary-color);
+    width: 96%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#msg > div.scroll{
+    height: 100%;
+    overflow-y: auto;
+    flex-direction: column-reverse;
 }

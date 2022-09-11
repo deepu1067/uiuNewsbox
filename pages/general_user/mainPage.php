@@ -205,8 +205,9 @@ include 'room.php';
                         <div class="card w-50 m-auto mt-3 pt-2">
                             <div class="card-title text-center text-uppercase fw-bold"><?php echo $a_row["forum_name"]; ?></div>
                             <div class="card-body">
-                                <form action="chat.php" class="d-flex flex-column justify-content-center align-items-center">
+                                <form action="chat.php" class="d-flex flex-column justify-content-center align-items-center" method="post">
                                     <input type="hidden" name="joined_room" <?php echo "value='{$a_row["id"]}'" ?>>
+                                    <input type="hidden" name="forum" <?php echo "value='{$a_row["forum_name"]}'" ?>>
                                     <button class="btn btn-uiu" type="submit">Go</button>
                                 </form>
                             </div>

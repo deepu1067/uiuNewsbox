@@ -129,6 +129,9 @@ create table chats(
     users_id int,
     forumRep_id int,
     texts varchar(200), 
+    sl_no int AUTO_INCREMENT PRIMARY KEY,
+    dates date,
+    mtime time,
 
     Foreign Key (room_id) REFERENCES room(id),
     Foreign Key (users_id) REFERENCES general_user(id),
