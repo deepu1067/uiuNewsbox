@@ -136,4 +136,25 @@ create table chats(
     Foreign Key (room_id) REFERENCES room(id),
     Foreign Key (users_id) REFERENCES general_user(id),
     Foreign Key (forumRep_id) REFERENCES forumRep(id)
-)
+);
+
+CREATE TABLE categories (
+  id int(11) NOT NULL,
+  cat_name varchar(255) NOT NULL,
+  cat_order varchar(255) NOT NULL
+);
+
+INSERT INTO `categories` (`id`, `cat_name`, `cat_order`) VALUES
+(1, 'Events', '1'),
+(2, 'Job Post', '2');
+
+CREATE TABLE posts (
+  id int(11) NOT NULL,
+  title varchar(255) NOT NULL,
+  description longtext NOT NULL,
+  img varchar(255) NOT NULL,
+  old_img varchar(255) NOT NULL,
+  cat_id varchar(255) NOT NULL,
+  date varchar(255) NOT NULL,
+  view int(11) NOT NULL
+);
