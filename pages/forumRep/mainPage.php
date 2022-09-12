@@ -55,7 +55,9 @@
 </div>
        
         <br><br>
-        <a type="button" class="btn btn-secondary" href="post.php">Create a New post</a>
+        <a type="button" class="btn btn-secondary" href="add_post.php">Create a New post</a>
+        <a type="button" class="btn btn-secondary" href="post.php">All Post</a>
+        <a type="button" class="btn btn-secondary" href="views.php">Views</a>
 </div>
     </div>
 
