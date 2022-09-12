@@ -156,5 +156,6 @@ CREATE TABLE posts (
   old_img varchar(255) NOT NULL,
   cat_id varchar(255) NOT NULL,
   date varchar(255) NOT NULL,
-  view int(11) NOT NULL
+  view int(11) NOT NULL,
+  f_email varchar(50) not null
 );
