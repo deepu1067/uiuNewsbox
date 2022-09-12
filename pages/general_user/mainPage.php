@@ -1,8 +1,10 @@
 <?php
 session_start();
+include 'showUser.php';
 include 'post.php';
 include '../sqlCommands/connectDb.php';
 include 'room.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +20,10 @@ include 'room.php';
 
     <nav class="d-flex justify-content-between align-items-center">
         <img src="../../assets/img/ForOrangeBg.png" alt="logo" class="img-fluid pt-1 pb-1">
-        <a href="../login/logout.php" class="btn btn-uiu text-uppercase">logout</a>
+        <div class="d-flex flex-column justify-content-center align-items-center p-1">
+            <p class="m-0 text-uppercase mb-1 p-1 fw-bold   " style="border: 1px solid white; border-radius:10px ;"><?php echo show($_SESSION["id"]); ?></p>
+            <a href="../login/logout.php" class="btn btn-uiu text-uppercase">logout</a>
+        </div>
     </nav>
 
     <div class="d-flex align-items-start">
@@ -199,7 +204,7 @@ include 'room.php';
             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">
                 <!-- joined -->
                 <?php if (mysqli_num_rows($joined_q) == 0) : ?>
-                    <h2 class="text-center" >Please join a forum discussion room first</h2>
+                    <h2 class="text-center">Please join a forum discussion room first</h2>
                 <?php else : ?>
                     <?php while ($a_row = mysqli_fetch_assoc($joined_q)) : ?>
                         <div class="card w-50 m-auto mt-3 pt-2">
@@ -208,7 +213,12 @@ include 'room.php';
                                 <form action="chat.php" class="d-flex flex-column justify-content-center align-items-center" method="post">
                                     <input type="hidden" name="joined_room" <?php echo "value='{$a_row["id"]}'" ?>>
                                     <input type="hidden" name="forum" <?php echo "value='{$a_row["forum_name"]}'" ?>>
-                                    <button class="btn btn-uiu" type="submit">Go</button>
+                                    <div>
+                                        <button class="btn btn-uiu" type="submit">Go</button>
+                                        <a <?php echo "href='delete/leaveForum.php?delete_forum={$a_row["id"]}'" ?> class="btn btn-uiu text-uppercase">
+                                            Leave
+                                        </a>
+                                    </div>
                                 </form>
                             </div>
                         </div>
