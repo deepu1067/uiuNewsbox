@@ -61,3 +61,14 @@ nav div a:hover{
     color: #E38B29 !important;
 }
 
+.border-bottom-uiu {
+    border-bottom: 1px solid var(--third-color) !important;
+}
+
+#item-container .fa-solid:first-child:hover{
+    color: green !important;
+}
+
+#item-container .fa-solid.fa-square-minus:hover{
+    color: red !important;
+}
