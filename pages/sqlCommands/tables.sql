@@ -149,7 +149,7 @@ INSERT INTO `categories` (`id`, `cat_name`, `cat_order`) VALUES
 (2, 'Job Post', '2');
 
 CREATE TABLE posts (
-  id int(11) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
   title varchar(255) NOT NULL,
   description longtext NOT NULL,
   img varchar(255) NOT NULL,
@@ -159,3 +159,15 @@ CREATE TABLE posts (
   view int(11) NOT NULL,
   f_email varchar(50) not null
 );
+
+
+-- DROP TABLE post_comment;
+-- create table post_comment(
+--     id int (5) AUTO_INCREMENT,
+--     cDates date,
+--     cTime time,
+--     content varchar(1000),
+--     cLike int,
+--     post_id int,
+--     PRIMARY key(id) 
+-- );
