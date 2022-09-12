@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
     <nav class="d-flex justify-content-between align-items-center">
         <img src="../../assets/img/ForOrangeBg.png" alt="logo" class="img-fluid ">
 
-        <h2 class="text-uppercase fw-bold"><?php echo "It is a ".$_SESSION['type'] ;?></h2>
+        <h2 class="text-uppercase fw-bold"><?php echo "It is a " . $_SESSION['type']; ?></h2>
         <div>
             <a href="details.php">Details</a>
         </div>
@@ -27,38 +27,44 @@
 
     <div>
         <?php
-    include '../sqlCommands/connectDb.php';
-    $email=$_SESSION['email'];
+        include '../sqlCommands/connectDb.php';
+        $email = $_SESSION['email'];
 
-  $q =  "SELECT * FROM `forumrep` where email = '$email';";
-  $run = mysqli_query($sql, $q);
-  $html = "";
-  
-  if(mysqli_num_rows($run)>0){
-      while($row = $run->fetch_assoc()){
-          $html = $html. 
-                     $row["first_name"]." ".
+        $q =  "SELECT * FROM `forumrep` where email = '$email';";
+        $run = mysqli_query($sql, $q);
+        $html = "";
+
+        if (mysqli_num_rows($run) > 0) {
+            while ($row = $run->fetch_assoc()) {
+                $html = $html .
+                    $row["first_name"] . " " .
                     $row["last_name"];
-         
-      }
-  }  
-?>
-<div class="container">
-<h1 class = "position-absolute ">
-            <?php
-        echo "WELCOME " ." ".$html; 
-       
-       ?>
-        </h1>
+            }
+        }
+        ?>
+        <div class="container">
+            <h1 class="position-absolute ">
+                <?php
+                echo "WELCOME " . " " . $html;
+
+                ?>
+            </h1>
 
 
-</div>
-       
+        </div>
+
         <br><br>
+<<<<<<< HEAD
         <a type="button" class="btn btn-secondary" href="add_post.php">Create a New post</a>
         <a type="button" class="btn btn-secondary" href="post.php">All Post</a>
         <a type="button" class="btn btn-secondary" href="views.php">Views</a>
 </div>
+=======
+        <a type="button" class="btn btn-secondary" href="post.php">Create a New post</a>
+
+        <div><a href="discussion/room.php" class="btn btn-uiu mt-2">Go to discussion room</a></div>
+
+>>>>>>> bac6694a6aead06e82064a0d645418a7d39ddfb0
     </div>
 
 

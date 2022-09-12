@@ -13,13 +13,6 @@ create table admin
     primary key(id)
 );
 
-create table admin_address
-(
-    address varchar(100) not null,
-    id int,
-    foreign key(id) references admin(id)
-);
-
 create table general_user(
     id int AUTO_INCREMENT,
     first_name varchar(50) not null,
@@ -28,12 +21,6 @@ create table general_user(
     phone_number varchar(50),
     passwords VARCHAR(20),
     primary key(id)
-);
-
-create table general_address(
-    address varchar(100) not null,
-    id int,
-    foreign key(id) references general_user(id)
 );
 
 create table forumRep(
@@ -46,11 +33,6 @@ create table forumRep(
     primary key(id)
 );
 
-create table forumRep_address(
-    address varchar(100) not null,
-    id int,
-    foreign key(id) references forumRep(id)
-);
 
 create table newsPost(
     post_id int AUTO_INCREMENT,
@@ -122,5 +104,36 @@ create table questions(
 
     primary key(course_id),
     FOREIGN KEY (general_user_id) REFERENCES general_user(id)
-
 );
+
+create table room(
+    id int AUTO_INCREMENT,
+    forum_name VARCHAR(100),
+    forumRep_id int, 
+
+    primary key(id),
+    Foreign Key (forumRep_id) REFERENCES forumRep(id)
+);
+
+create table users(
+    room_id int,
+    users_id int,
+    approve int, 
+
+    Foreign Key (room_id) REFERENCES room(id),
+    Foreign Key (users_id) REFERENCES general_user(id)
+);
+
+create table chats(
+    room_id int,
+    users_id int,
+    forumRep_id int,
+    texts varchar(200), 
+    sl_no int AUTO_INCREMENT PRIMARY KEY,
+    dates date,
+    mtime time,
+
+    Foreign Key (room_id) REFERENCES room(id),
+    Foreign Key (users_id) REFERENCES general_user(id),
+    Foreign Key (forumRep_id) REFERENCES forumRep(id)
+)

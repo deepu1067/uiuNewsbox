@@ -50,3 +50,25 @@ nav div a:hover{
 {
     margin-bottom: 50px;
 }
+
+.btn-uiu {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+}
+
+.btn-uiu-white {
+    background-color: #fff !important;
+    color: #E38B29 !important;
+}
+
+.border-bottom-uiu {
+    border-bottom: 1px solid var(--third-color) !important;
+}
+
+#item-container .fa-solid:first-child:hover{
+    color: green !important;
+}
+
+#item-container .fa-solid.fa-square-minus:hover{
+    color: red !important;
+}
