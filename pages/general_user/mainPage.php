@@ -232,7 +232,7 @@ include 'job_post.php';
                 <!-- job post -->
                 <div class="d-flex justify-content-between align-items-center mt-2">
                     <h2 class="w-100 text-center border-bottom-uiu">Job post</h2>
-                    <a href="" class="btn btn-uiu">Create New Post</a>
+                    <a href="createPost.php" class="btn btn-uiu">Create New Post</a>
                 </div>
 
                 <section class="mt-2" id="jform">
