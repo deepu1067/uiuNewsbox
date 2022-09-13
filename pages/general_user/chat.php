@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="send.php" method="post">
                 <div class="input-group flex-nowrap">
                     <input type="hidden" name="room_id" <?php echo "value='{$_SESSION["room_id"]}'" ?>>
-                    <input type="text" class="form-control" aria-describedby="addon-wrapping" name="msg" required>
+                    <input type="text" class="form-control" aria-describedby="addon-wrapping" name="msg" required autocomplete="off">
                     <button type="submit" class="btn btn-uiu">Send</button>
                 </div>
             </form>
