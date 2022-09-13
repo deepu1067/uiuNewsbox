@@ -161,13 +161,13 @@ CREATE TABLE posts (
 );
 
 
--- DROP TABLE post_comment;
--- create table post_comment(
---     id int (5) AUTO_INCREMENT,
---     cDates date,
---     cTime time,
---     content varchar(1000),
---     cLike int,
---     post_id int,
---     PRIMARY key(id) 
--- );
+DROP TABLE post_comment;
+create table post_comment(
+    id int (5) AUTO_INCREMENT,
+    cDates date,
+    cTime time,
+    content varchar(1000),
+    cLike int,
+    post_id int,
+    PRIMARY key(id) 
+);

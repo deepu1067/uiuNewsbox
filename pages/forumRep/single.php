@@ -106,6 +106,14 @@ if (isset($_GET["id"])) {
                             </div><!-- end pp -->
                         </div><!-- end content -->
 
+
+                        <!-- comments show  -->
+
+                        <div>
+                            <h2>
+                                Show Comments:
+                            </h2>
+                        </div>
                         <div>
                            
                             <?php

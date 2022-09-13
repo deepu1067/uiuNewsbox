@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
             $_POST['title'] = "";
             $_POST['description'] = "";
             $_POST['category'] = "";
+            header("location: mainPage.php");
         } else {
             $msg = "<div class='alert alert-danger'>Something wrong went. Please try again later.</div>";
         }
