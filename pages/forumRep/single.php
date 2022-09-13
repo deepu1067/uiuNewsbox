@@ -14,13 +14,10 @@ if (isset($_POST['submit1'])) {
     $time = date("h:i:sa");
 
 
-        $comment_query= "INSERT INTO post_comment (id,cDates, cTime, content, cLike, post_id) VALUES ('','$date' , '$time' , '$content', 0, '$post_id')";
+       $comment_query= "INSERT INTO post_comment (id,cDates, cTime, content, cLike, post_id) VALUES ('','$date' , '$time' , '$content', 0, '$post_id')";
+       
        $new_result =  mysqli_query($sql, $comment_query);
-      
-     
-
-
-        //header("location: index.php");
+      //header("location: single.php");
 
 }
 
@@ -131,7 +128,7 @@ if (isset($_GET["id"])) {
                         <!-- comment part Start -->
 
 
-                        <form action="single.php" method="POST">
+                        <form action="" method="POST">
                             <input type="hidden" name="post_id" <?php echo "value='{$row["id"]}'"; ?>>
                             <textarea name="comments" id="comments"
                                 style="width:96%;height:90px;padding:2%;font:1.4em/1.6em cursive;background-color:gold;color:hotpink;">
