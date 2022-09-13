@@ -85,7 +85,7 @@ include 'job_post.php';
                                         <input type="hidden" name="post_id" <?php echo "value='{$row["post_id"]}'"; ?>>
                                         <input type="text" class="form-control" <?php echo "id='commentInput{$row["post_id"]}'"; ?> placeholder="text" name="comment" value="" required>
                                         <label <?php echo "for='comment{$row["post_id"]}'"; ?>>Comment here</label>
-                                    </div>
+                                    </div>`
                                     <button type="submit" class="btn btn-uiu text-capitalize">comment</button>
                                 </form>
 
