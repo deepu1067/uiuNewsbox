@@ -4,7 +4,7 @@ include 'showUser.php';
 include 'post.php';
 include '../sqlCommands/connectDb.php';
 include 'room.php';
-
+include 'job_post.php';
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +35,8 @@ include 'room.php';
             <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Group</button>
 
             <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Joined</button>
+
+            <button class="nav-link" id="v-pills-job-post-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job-post" type="button" role="tab" aria-controls="v-pills-job-post" aria-selected="false">Job Post</button>
         </div>
 
         <div class="tab-content" id="v-pills-tabContent" style="width: 85%!important;">
@@ -226,6 +228,96 @@ include 'room.php';
                 <?php endif ?>
             </div>
 
+            <div class="tab-pane fade" id="v-pills-job-post" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">
+                <!-- job post -->
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <h2 class="w-100 text-center border-bottom-uiu">Job post</h2>
+                    <a href="" class="btn btn-uiu">Create New Post</a>
+                </div>
+
+                <section class="mt-2" id="jform">
+                    <?php while ($qrow = mysqli_fetch_assoc($job_query)) : ?>
+                        <div class="card border-uiu mb-3" style="max-width: 25rem;">
+                            <div class="card-header bg-transparent">
+                                <?php
+                                $j_auth = "";
+                                $j_type = "";
+
+                                if (!is_null($qrow["admin_id"])) {
+                                    $j_auth = "select concat(first_name, ' ', last_name) fullName from admin where id = {$qrow["admin_id"]}";
+                                    $j_type = "admin";
+                                } else if (!is_null($qrow["general_user_id"])) {
+                                    $j_auth = "select concat(first_name, ' ', last_name) fullName from general_user where id = {$qrow["general_user_id"]}";
+                                    $j_type = "general user";
+                                } else {
+                                    $j_auth = "select concat(first_name, ' ', last_name) fullName from forumRep where id = {$qrow["forumRep_id"]}";
+                                    $j_type = "Forum Representitive";
+                                }
+
+                                $jobauth_query = mysqli_fetch_assoc(mysqli_query($sql, $j_auth));
+                                echo "{$jobauth_query["fullName"]} ({$j_type})";
+
+                                $jcomm_query = mysqli_query($sql, "select * from jobpost_comment where jpost_id={$qrow["post_id"]}");
+
+                                $jsize = mysqli_num_rows($jcomm_query);
+                                ?>
+                            </div>
+
+                            <div class="card-body border-top-uiu border-bottom-uiu">
+                                <p class="card-text">
+                                    <?php
+                                    echo  $qrow["content"];
+                                    ?>
+                                </p>
+                            </div>
+
+                            <div class="card-footer bg-transparent">
+                                <!-- sending input data -->
+                                <form action="job_post.php" method="post" class="mb-2">
+                                    <div class="form-floating mb-3">
+                                        <input type="hidden" name="post_id" <?php echo "value='{$qrow["post_id"]}'"; ?>>
+                                        <input type="text" class="form-control" <?php echo "id='commentInput{$qrow["post_id"]}'"; ?> placeholder="text" name="comment" value="" required>
+                                        <label <?php echo "for='comment{$qrow["post_id"]}'"; ?>>Comment here</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-uiu text-capitalize">comment</button>
+                                </form>
+
+                                <button type="button" class="btn btn-uiu" data-bs-toggle="modal" <?php echo "data-bs-target='#jcomment{$qrow["post_id"]}'"; ?>>
+                                    View Comments
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" tabindex="-1" <?php echo "id='jcomment{$qrow["post_id"]}'"; ?> aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-capitalize fw-bold" id="exampleModalLabel">
+                                                    <?php echo $qrow["title"]; ?>
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <?php if ($jsize == 0) : ?>
+                                                    <p class="m-0 text-uppercase">no comments yet</p>
+                                                <?php else : ?>
+                                                    <ol>
+                                                        <?php while ($jcom_row = mysqli_fetch_assoc($jcomm_query)) : ?>
+                                                            <li><?php echo $jcom_row["content"]; ?></li>
+                                                        <?php endwhile ?>
+                                                    </ol>
+                                                <?php endif ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php endwhile  ?>
+
+                </section>
+            </div>
         </div>
     </div>
 

@@ -83,7 +83,7 @@ body>div button {
     border: 1px solid var(--secondary-color) !important;
 }
 
-section#form {
+section#form , section#jform {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 25rem));
     grid-gap: 0.6rem;
