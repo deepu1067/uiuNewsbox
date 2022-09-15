@@ -171,3 +171,5 @@ create table post_comment(
     post_id int,
     PRIMARY key(id) 
 );
+
+ALTER TABLE post_comment ADD COLUMN name VARCHAR(250) After post_id;

@@ -18,7 +18,7 @@ include 'job_post.php';
 
 <body>
 
-    <nav class="d-flex justify-content-between align-items-center">
+ <nav class="d-flex justify-content-between align-items-center">
         <img src="../../assets/img/ForOrangeBg.png" alt="logo" class="img-fluid pt-1 pb-1">
         <div class="d-flex flex-column justify-content-center align-items-center p-1">
             <p class="m-0 text-uppercase mb-1 p-1 fw-bold   " style="border: 1px solid white; border-radius:10px ;"><?php echo show($_SESSION["id"]); ?></p>
