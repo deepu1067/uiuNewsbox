@@ -86,16 +86,31 @@ if (isset($_POST['submit'])) {
                         <select class="form-control" name="category" required>
                             <option value="" selected hidden disabled>Select Category</option>
                             <?php
-
-                            $r = "SELECT * FROM categories";
-                            $result = mysqli_query($sql, $r);
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                            
-                            ?>
-                            <option <?php if ($row1['cat_id'] == $row['id']) { echo "selected"; } ?>
-                                value="<?php echo $row['id']; ?>"><?php echo $row['cat_name']; ?></option>
-                            <?php } } ?>
+                              if($_SESSION['type'] == "forumRep" || $_SESSION['type'] == "admin" )
+                                {
+                                 $r = "SELECT * FROM categories";
+                                 $result = mysqli_query($sql, $r);
+                                 if (mysqli_num_rows($result) > 0) {
+                                     while ($row = mysqli_fetch_assoc($result)) {
+                                 
+                                 ?>
+                                <option <?php if ($_POST['category'] == $row['id']) { echo "selected"; } ?>
+                                    value="<?php echo $row['id']; ?>"><?php echo $row['cat_name']; ?></option>
+                                <?php } } 
+                                }
+                               
+                                else 
+                                {
+                                    $r = "SELECT * FROM categories where id = 2 ";
+                                    $result = mysqli_query($sql, $r);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                    
+                                    ?>
+                                    <option <?php if ($_POST['category'] == $row['id']) { echo "selected"; } ?>
+                                        value="<?php echo $row['id']; ?>"><?php echo $row['cat_name']; ?></option>
+                                    <?php } } 
+                                } ?>
                         </select>
                     </div>
                     <div class="form-group">
