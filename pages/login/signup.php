@@ -7,9 +7,10 @@ include "create.php";
 
 <head>
     <meta charset="UTF-8">
-    <title>UIU News Box</title>
+    <title>SignUp Form</title>
     <link rel="stylesheet" href="../../assets/css/signup.css">
     <script src="../../assets/js/app.js"></script>
+    <link rel="icon" href="../../assets/img/favicon.png">
 </head>
 
 <body>

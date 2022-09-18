@@ -37,8 +37,7 @@
     </script>
     <script src="https://use.fontawesome.com/2c7ebecd35.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
+
 
 
 
@@ -47,8 +46,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>General User Details</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/css/favicon.png">
 </head>
 <body>
 
@@ -56,10 +56,6 @@
     <img src="../../assets/img/ForOrangeBg.png" alt="logo" class="img-fluid ">
 
     <h2 class="text-uppercase fw-bold"><?php echo "It is an ".$_SESSION['type'] ;?></h2>
-
-    <div>
-        <a href="next.php">User Details</a>
-    </div>
 
     <div>
         <a href="../login/logout.php">logout</a>
