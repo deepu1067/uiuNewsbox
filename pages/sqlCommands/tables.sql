@@ -149,7 +149,7 @@ INSERT INTO `categories` (`id`, `cat_name`, `cat_order`) VALUES
 (2, 'Job Post', '2');
 
 CREATE TABLE posts (
-  id int(11) NOT NULL AUTO_INCREMENT,
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY key,
   title varchar(255) NOT NULL,
   description longtext NOT NULL,
   img varchar(255) NOT NULL,
