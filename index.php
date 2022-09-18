@@ -83,9 +83,6 @@ include "pages/login/login.php";
             <h5 class="mt-4 fw-bold">Are you new? <a href="pages/login/signup.php" class="ml-1">Create new account</a></h5>
             <h5 class="mt-4 fw-bold">Forgate Your PassWord? <a href="smtp\recover_psw.php" class="ml-1">Click Here</a></h5>
         </div>
-        <?php
-        include "pages/login/footer.php";
-        ?>
           
     </main>
 

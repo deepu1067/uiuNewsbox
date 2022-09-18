@@ -12,8 +12,9 @@ include 'job_post.php';
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Home Page</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/favicon.png">
 </head>
 
 <body>

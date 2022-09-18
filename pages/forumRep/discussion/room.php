@@ -9,7 +9,8 @@ include "list.php";
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Room</title>
+    <link rel="icon" href="../assets/css/favicon.png">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 

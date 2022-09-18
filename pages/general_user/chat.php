@@ -23,8 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
-    <title>Discussion</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Chat</title>
+    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="icon" href="assets/img/favicon.png">
 </head>
 
 <body>

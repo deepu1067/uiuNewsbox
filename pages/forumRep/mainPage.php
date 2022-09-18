@@ -8,6 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
+    <link rel="icon" href="assets/css/favicon.png">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/css/favicon.png">
 </head>
