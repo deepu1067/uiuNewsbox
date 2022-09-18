@@ -15,6 +15,7 @@
     <link rel="icon" href="assets/css/favicon.png">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="../general_user/assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style-foot.css">
     <link rel="icon" href="assets/css/favicon.png">
 </head>
 
@@ -309,6 +310,48 @@
 
         </div>
     </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <h4>QUICK LINK</h4>
+                    <ul>
+                        <li><a href="https://www.uiu.ac.bd/">United International University
+                            </a></li>
+                        <li><a href="https://ucam.uiu.ac.bd/Security/LogIn.aspx">UCAM</a></li>
+                        <li><a href="http://lms.uiu.ac.bd/login/index.php">LMS</a></li>
+                        <li><a href="https://cse.uiu.ac.bd/">Dept. Of CSE</a></li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h4>QUICK CONTACT</h4>
+                    <p>
+                        Dhaka-1212,Bangladesh. <br>
+                        Phone: +88 09604-848-848 <br>
+                        E-mail: info@uiunewsbox.ac.bd <br>
+                    </p>
+                </div>
+                <div class="col-3">
+                    <h4>EMERGENCY SERVICES</h4>
+                    <ul>
+                        <li><a href="#">999 For Police, fire service and ambulance services</a></li>
+                        <li><a href="#">109 For women and children are abused.</a></li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h4>FOLLOW US</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/groups/249281981787004"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>                                
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/all.min.js"></script>
