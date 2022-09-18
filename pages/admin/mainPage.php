@@ -26,7 +26,6 @@
     }  
 
 ?>
-   </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
@@ -37,18 +36,16 @@
     </script>
     <script src="https://use.fontawesome.com/2c7ebecd35.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    
+    <title>Admin Home Page</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/css/favicon.png">
+    
 </head>
 <body>
 
@@ -95,5 +92,9 @@
         </table>
 
 </div>
+
+    <?php
+        include "../../pages/login/footer.php";
+    ?>
 </body>
 </html>

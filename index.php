@@ -9,6 +9,7 @@ include "pages/login/login.php";
     <meta charset="UTF-8">
     <title>Uiu Newsbox</title>
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="icon" href="assets/img/favicon.png">
 </head>
 
 <body>
@@ -80,7 +81,9 @@ include "pages/login/login.php";
             </div>
 
             <h5 class="mt-4 fw-bold">Are you new? <a href="pages/login/signup.php" class="ml-1">Create new account</a></h5>
+            <h5 class="mt-4 fw-bold">Forgate Your PassWord? <a href="smtp\recover_psw.php" class="ml-1">Click Here</a></h5>
         </div>
+          
     </main>
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>

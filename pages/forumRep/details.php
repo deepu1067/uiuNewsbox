@@ -15,8 +15,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Details </title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/css/favicon.png">
 </head>
 
 <body>

@@ -29,8 +29,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Create Post</title>
+    <link rel="icon" href="assets/css/favicon.png">
+    <link rel="icon" href="assets/img/favicon.png">
 </head>
 
 <body>
