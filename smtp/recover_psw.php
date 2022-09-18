@@ -107,72 +107,86 @@ session_start();
 
     if(isset($_POST["recover"])){
         $email = $_POST["email"];
+        error_reporting(E_ERROR);
         $type = $_POST["account-type"];
-        
 
-        $q3 = mysqli_query($sql, "SELECT * from {$type} where email='{$email}'");
-        $query = mysqli_num_rows($q3);
-  	    $fetch = mysqli_fetch_assoc($q3);
 
-        if(mysqli_num_rows($q3) <= 0){
+        if(!$type)
+        {
             ?>
-<script>
-alert("<?php  echo "Sorry, no emails exists "?>");
-</script>
-<?php
-        }else{
-            // generate token by binaryhexa 
-            $token = bin2hex(random_bytes(50));
-
-            //session_start ();
-            $_SESSION['token'] = $token;
-            $_SESSION['email'] = $email;
-            $_SESSION['account-type'] = $type;
-
-            require "Mail/phpmailer/PHPMailerAutoload.php";
-            $mail = new PHPMailer;
-
-            $mail->isSMTP();
-            $mail->Host='smtp.gmail.com';
-            $mail->Port=587;
-            $mail->SMTPAuth=true;
-            $mail->SMTPSecure='tls';
-
-            // h-hotel account
-            $mail->Username='uiunewsbox@gmail.com';
-            $mail->Password='Zrnsfzljbvlhgkxe';
-
-            // send by h-hotel email
-            $mail->setFrom('email', 'Password Reset');
-            // get email from input
-            $mail->addAddress($_POST["email"]);
-            //$mail->addReplyTo('lamkaizhe16@gmail.com');
-
-            // HTML body
-            $mail->isHTML(true);
-            $mail->Subject="Recover your password";
-            $mail->Body="<b>Dear User</b>
-            <h3>We received a request to reset your password.</h3>
-            <p>Kindly click the below link to reset your password</p>
-            http://localhost/Update/uiuNewsbox/smtp/reset_psw.php
-            <br><br>
-            <p>With regrads,</p>
-            <b>UIU NEWS BOX</b>";
-
-            if(!$mail->send()){
-                ?>
-                <script>
-                alert("<?php echo " Invalid Email "?>");
-                </script>
-              <?php
-            }else{
-                ?>
-                <script>
-                 window.location.replace("notification.html");
-                </script>
+            <script>
+            alert("<?php echo " Select Account Type ! "?>");
+            </script>
             <?php
+        }
+
+        else
+        {
+            $q3 = mysqli_query($sql, "SELECT * from {$type} where email='{$email}'");
+            $query = mysqli_num_rows($q3);
+              $fetch = mysqli_fetch_assoc($q3);
+    
+            if(mysqli_num_rows($q3) <= 0){
+                ?>
+    <script>
+    alert("<?php  echo "Sorry, no emails exists "?>");
+    </script>
+    <?php
+            }else{
+                // generate token by binaryhexa 
+                $token = bin2hex(random_bytes(50));
+    
+                //session_start ();
+                $_SESSION['token'] = $token;
+                $_SESSION['email'] = $email;
+                $_SESSION['account-type'] = $type;
+    
+                require "Mail/phpmailer/PHPMailerAutoload.php";
+                $mail = new PHPMailer;
+    
+                $mail->isSMTP();
+                $mail->Host='smtp.gmail.com';
+                $mail->Port=587;
+                $mail->SMTPAuth=true;
+                $mail->SMTPSecure='tls';
+    
+                // h-hotel account
+                $mail->Username='uiunewsbox@gmail.com';
+                $mail->Password='Zrnsfzljbvlhgkxe';
+    
+                // send by h-hotel email
+                $mail->setFrom('email', 'Password Reset');
+                // get email from input
+                $mail->addAddress($_POST["email"]);
+                //$mail->addReplyTo('lamkaizhe16@gmail.com');
+    
+                // HTML body
+                $mail->isHTML(true);
+                $mail->Subject="Recover your password";
+                $mail->Body="<b>Dear User</b>
+                <h3>We received a request to reset your password.</h3>
+                <p>Kindly click the below link to reset your password</p>
+                http://localhost/Update/uiuNewsbox/smtp/reset_psw.php
+                <br><br>
+                <p>With regrads,</p>
+                <b>UIU NEWS BOX</b>";
+    
+                if(!$mail->send()){
+                    ?>
+                    <script>
+                    alert("<?php echo " Invalid Email "?>");
+                    </script>
+                  <?php
+                }else{
+                    ?>
+                    <script>
+                     window.location.replace("notification.html");
+                    </script>
+                <?php
+                }
             }
         }
+            
     }
 
 ?>
