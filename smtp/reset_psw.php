@@ -27,7 +27,9 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
+
     <title>Reset Password</title>
+    <link rel="icon" href="assets/css/favicon.png">
 </head>
 <body>
 
