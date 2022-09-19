@@ -22,6 +22,16 @@ include 'job_post.php';
 
     <nav class="d-flex justify-content-between align-items-center">
         <img src="../../assets/img/ForOrangeBg.png" alt="logo" class="img-fluid pt-1 pb-1">
+        <h5 class="text-capitalize border-all fw-bold">
+            <?php
+            if ($_SESSION["type"] == "forumRep")
+                echo "Forum Represtitive";
+            else if ($_SESSION["type"] == "general_user")
+                echo "General User";
+            else
+                echo "Admin";
+            ?>
+        </h5>
         <div class="d-flex flex-column justify-content-center align-items-center p-1">
             <p class="m-0 text-uppercase mb-1 p-1 fw-bold   " style="border: 1px solid white; border-radius:10px ;">
                 <?php echo show($_SESSION["id"]); ?></p>
@@ -111,8 +121,10 @@ include 'job_post.php';
                             <p class="m-0"><?php echo "<strong>Contact Number:</strong> {$row["phone_number"]}" ?></p>
                         </div>
 
+                        <div>
                         <button class="btn btn-uiu mt-2" id="changeBtn">Change current password</button>
-
+                        <a class="btn btn-uiu mt-2" href="edit_profile.php?id=<?= $_SESSION["id"] ?>">Edit</a>
+                        </div>
                         <p <?php if ($_SESSION["currentPass"] == 1) echo "class='d-block m-0 mt-2 fw-bold'";
                             else echo "class='d-none'" ?>>Current password not matched</p>
 

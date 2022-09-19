@@ -1,9 +1,10 @@
 <?php
-    session_start();
-    include "showUser.php";
-    include "../general_user/job_post.php";
-    include "../general_user/profile.php";
-    include "discussion/list.php";
+session_start();
+include "../sqlCommands/connectDb.php";
+include "../general_user/job_post.php";
+include "../general_user/profile.php";
+include "discussion/list.php";
+include "showUser.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,9 +14,9 @@
     <meta charset="UTF-8">
     <title>Home Page</title>
     <link rel="icon" href="assets/css/favicon.png">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="../general_user/assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/style-foot.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/css/favicon.png">
 </head>
 
@@ -25,12 +26,12 @@
         <img src="../../assets/img/ForOrangeBg.png" alt="logo" class="img-fluid pt-1 pb-1">
         <h5 class="text-capitalize border-all fw-bold">
             <?php
-                if($_SESSION["type"] == "forumRep")
-                    echo "Forum Represtitive";
-                else if($_SESSION["type"] == "general_user")
-                    echo "General User";
-                else
-                    echo "Admin";
+            if ($_SESSION["type"] == "forumRep")
+                echo "Forum Represtitive";
+            else if ($_SESSION["type"] == "general_user")
+                echo "General User";
+            else
+                echo "Admin";
             ?>
         </h5>
         <div class="d-flex flex-column justify-content-center align-items-center p-1">
@@ -104,7 +105,6 @@
             </div>
 
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
-                <?php include "profile.php"; ?>
                 <div class="card w-50 d-flex align-items-center flex-column m-auto mt-3">
                     <?php while ($profile_row = mysqli_fetch_assoc($profile_query)) : ?>
                         <figure>
@@ -116,10 +116,13 @@
 
                         <div>
                             <p class="m-0"><?php echo "<strong>Email:</strong> {$profile_row["email"]}" ?></p>
-                            <p class="m-0"><?php echo "<strong>Contact Number:</strong> {$profile_row["phone_number"]}" ?></p>
+                            <p class="m-0 mt-2"><?php echo "<strong>Contact Number:</strong> {$profile_row["phone_number"]}" ?></p>
                         </div>
 
-                        <button class="btn btn-uiu mt-2" id="changeBtn">Change current password</button>
+                        <div>
+                            <button class="btn btn-uiu" id="changeBtn">Change current password</button>
+                            <a href="../general_user/edit_profile.php" class="btn btn-uiu">Edit</a>
+                        </div>
 
                         <p <?php if ($_SESSION["currentPass"] == 1) echo "class='d-block m-0 mt-2 fw-bold'";
                             else echo "class='d-none'" ?>>Current password not matched</p>
@@ -168,9 +171,9 @@
                                     <p class="m-0"><span><?= $counter . "--" ?></span> <?= $row["name"] ?> </p>
                                     <p class="m-0"><?= $row["forum_name"] ?></p>
                                     <div>
-                                        <a href="approve.php?room_id=<?= $row["room_id"] ?>&user_id=<?= $row["users_id"] ?>"><i class="fa-solid fa-circle-check fa-xl"></i></a>
+                                        <a href="discussion/approve.php?room_id=<?= $row["room_id"] ?>&user_id=<?= $row["users_id"] ?>"><i class="fa-solid fa-circle-check fa-xl"></i></a>
 
-                                        <a href="refuse.php?room_id=<?= $row["room_id"] ?>&user_id=<?= $row["users_id"] ?>"><i class="fa-solid fa-square-minus fa-xl"></i></a>
+                                        <a href="discussion/refuse.php?room_id=<?= $row["room_id"] ?>&user_id=<?= $row["users_id"] ?>"><i class="fa-solid fa-square-minus fa-xl"></i></a>
                                     </div>
                                 </section>
                                 <?php $counter++; ?>
@@ -351,7 +354,7 @@
                 </div>
             </div>
         </div>
-    </footer>                                
+    </footer>
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/all.min.js"></script>

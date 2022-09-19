@@ -7,5 +7,5 @@
     $query = "delete from users where room_id={$room_id} and users_id={$user_id}";
     mysqli_query($sql, $query);
     
-    header("Location: room.php");
+    header("Location: ../../../index.php");
 ?>

@@ -2,74 +2,6 @@
 @import url(../../../../assets/css/all.min.css);
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 
-*{
-    --main-color: #FDEEDC;
-    --secondary-color: #F1A661;
-    --second-secondary-color: #F1A661;
-    --third-color: #E38B29;
-    --text-color: #000000;
-
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    color: var(--text-color) !important;
-    padding: 0;
-    margin: 0;
-}
-
-nav{ 
-    background-color: var(--third-color);
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-.border-all{
-    border: 1px solid white;
-    border-radius: 10px;
-    padding: 5px 8px;
-}
-
-nav img{
-    width: 150px;
-}
-
-nav h2{
-    color: white !important;
-}
-
-nav div a{
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: white !important;
-    border: 3px solid white;
-    padding: 0.3rem 0.5rem;
-    border-radius: 15px;
-}
-
-nav div a:hover{
-    background-color: #fff;
-    color: var(--third-color) !important;
-}
-
-.container
-{
-    margin-bottom: 50px;
-}
-
-.btn-uiu {
-    background-color: var(--secondary-color) !important;
-    color: white !important;
-}
-
-.btn-uiu-white {
-    background-color: #fff !important;
-    color: #E38B29 !important;
-}
-
-.border-bottom-uiu {
-    border-bottom: 1px solid var(--third-color) !important;
-}
 
 #item-container .fa-solid:first-child:hover{
     color: green !important;
@@ -78,4 +10,3 @@ nav div a:hover{
 #item-container .fa-solid.fa-square-minus:hover{
     color: red !important;
 } 
-
