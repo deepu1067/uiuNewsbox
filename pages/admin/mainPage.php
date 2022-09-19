@@ -42,6 +42,7 @@ $user_query = mysqli_query($sql, $g_q);
             <button class="nav-link active " id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
 
             <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-all" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">All Post</button>
 
         </div>
 
@@ -168,6 +169,10 @@ $user_query = mysqli_query($sql, $g_q);
                 </aside>
             </div>
 
+
+            <div class="tab-pane fade" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                        <a href="allpost.php" class="btn btn-uiu">all post</a>
+        </div>
         </div>
     </div>
 
