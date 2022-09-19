@@ -25,6 +25,13 @@ nav {
 nav img {
     width: 150px;
 }
+ 
+.border-all{
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px 8px;
+}
+
 
 body>div {
     padding: 0 1rem !important;
