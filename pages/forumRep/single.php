@@ -154,7 +154,7 @@ if (isset($_GET["id"])) {
                         </div><!-- end title -->
 
                         <div class="single-post-media">
-                            <img src="<?php if (file_exists("uploads/" . $row['img'])) { echo "uploads/" . $row['img']; } else { echo "uploads/" . $row['old_img']; } ?>"
+                            <img src="<?php if (file_exists("../uploads/". $row['img'])) { echo "../uploads/" . $row['img']; } else { echo "../uploads/" . $row['old_img']; } ?>"
                                 alt="" class="img-fluid">
                         </div><!-- end media -->
 
@@ -230,7 +230,7 @@ if (isset($_GET["id"])) {
                                     <div class="blog-box">
                                         <div class="post-media">
                                             <a href="single.php?id=<?php echo $row1['id']; ?>" title="">
-                                                <img src="<?php if (file_exists("uploads/" . $row1['img'])) { echo "uploads/" . $row1['img']; } else { echo "uploads/" . $row1['old_img']; } ?>"
+                                                <img src="<?php if (file_exists("../uploads/" . $row1['img'])) { echo "../uploads/" . $row1['img']; } else { echo "../uploads/" . $row1['old_img']; } ?>"
                                                     alt="" class="img-fluid">
                                                 <div class="hovereffect">
                                                     <span class=""></span>
