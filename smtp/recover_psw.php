@@ -166,7 +166,11 @@ session_start();
                 $mail->Body="<b>Dear User</b>
                 <h3>We received a request to reset your password.</h3>
                 <p>Kindly click the below link to reset your password</p>
+<<<<<<< HEAD
                 http://localhost/uiuNewsbox/smtp/reset_psw.php
+=======
+                http://localhost/Update1/uiuNewsbox/smtp/reset_psw.php
+>>>>>>> b8f1c9cf83edd8d2d046a3fe12a84e5713beced9
                 <br><br>
                 <p>With regrads,</p>
                 <b>UIU NEWS BOX</b>";
