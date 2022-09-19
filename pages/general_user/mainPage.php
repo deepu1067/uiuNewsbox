@@ -122,8 +122,8 @@ include 'job_post.php';
                         </div>
 
                         <div>
-                        <button class="btn btn-uiu mt-2" id="changeBtn">Change current password</button>
-                        <a class="btn btn-uiu mt-2" href="edit_profile.php?id=<?= $_SESSION["id"] ?>">Edit</a>
+                            <button class="btn btn-uiu mt-2" id="changeBtn">Change current password</button>
+                            <a class="btn btn-uiu mt-2" href="edit_profile.php?id=<?= $_SESSION["id"] ?>">Edit</a>
                         </div>
                         <p <?php if ($_SESSION["currentPass"] == 1) echo "class='d-block m-0 mt-2 fw-bold'";
                             else echo "class='d-none'" ?>>Current password not matched</p>
@@ -266,7 +266,7 @@ include 'job_post.php';
 
                                         $email = $_SESSION['email'];
 
-                                        $r = "SELECT * FROM posts where f_email = '$email' ";
+                                        $r = "SELECT * FROM posts where f_email = '{$email}' ";
                                         $result = mysqli_query($sql, $r);
                                         if (mysqli_num_rows($result) > 0) {
                                             $id = 1;

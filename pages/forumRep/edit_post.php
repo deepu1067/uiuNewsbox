@@ -52,13 +52,9 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-<<<<<<< HEAD
-    <title>Update Post</title>
-=======
+    <link rel="stylesheet" href="../general_user/assets/css/style.css">
     <link rel="icon" href="assets/css/favicon.png">
     <title>Edit Post</title>
->>>>>>> ef478a2c68c9f6f5c48aa496e39955752d3ba53c
 </head>
 
 <body>
